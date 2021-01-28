@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Wypozyczalnia_sprzetu_budowlanego.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kategorie</h1>
+
+<p>
+    <a asp-action="Create">Stwórz nową kategorię</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nazwa kategorii
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazwaKategorii)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCategory">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCategory">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCategory">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

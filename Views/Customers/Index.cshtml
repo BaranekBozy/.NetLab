@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Wypozyczalnia_sprzetu_budowlanego.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Klienci</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowego klienta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th>
+                Numer telefonu
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumerTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCustomer">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCustomer">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCustomer">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

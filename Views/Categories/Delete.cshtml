@@ -1,0 +1,27 @@
+﻿@model Wypozyczalnia_sprzetu_budowlanego.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Usuń kategorię</h1>
+
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NazwaKategorii)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NazwaKategorii)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdCategory" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Wstecz</a>
+    </form>
+</div>

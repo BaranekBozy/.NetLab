@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Wypozyczalnia_sprzetu_budowlanego.Models.Renting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Wypożyczenia</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowe wypożyczenie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                Imie i nazwisko klienta
+            </th>
+            <th>
+               Sprzęt
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Imie)
+                @Html.DisplayFor(modelItem => item.Customer.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tool.Nazwa)
+                @Html.DisplayFor(modelItem => item.Tool.Producent)
+                @Html.DisplayFor(modelItem => item.Tool.Model)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdRenting">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.IdRenting">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdRenting">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
